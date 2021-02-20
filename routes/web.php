@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OauthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
 });
+
+Route::get('/github/redirect', [OauthController::class, 'githubRedirect'])->name('github.redirect');
+Route::get('/github/callback', [OauthController::class, 'githubCallback'])->name('github.callback');
+Route::get('/google/redirect', [OauthController::class, 'googleRedirect'])->name('google.redirect');
+Route::get('/google/callback', [OauthController::class, 'googleCallback'])->name('google.callback');
 
 require __DIR__ . '/auth.php';
