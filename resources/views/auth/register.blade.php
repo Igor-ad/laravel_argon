@@ -11,12 +11,12 @@
                     <div class="card-header bg-transparent pb-5">
                         <div class="text-muted text-center mt-2 mb-4"><small>{{ __('Sign up with') }}</small></div>
                         <div class="text-center">
-                            <a href="#" class="btn btn-neutral btn-icon mr-4">
+                            <a href="{{ route('github.redirect') }}" class="btn btn-neutral btn-icon mr-4">
                                 <span class="btn-inner--icon"><img
                                         src="{{ asset('argon') }}/img/icons/common/github.svg"></span>
                                 <span class="btn-inner--text">{{ __('Github') }}</span>
                             </a>
-                            <a href="#" class="btn btn-neutral btn-icon">
+                            <a href="{{ route('google.redirect') }}" class="btn btn-neutral btn-icon">
                                 <span class="btn-inner--icon"><img
                                         src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
                                 <span class="btn-inner--text">{{ __('Google') }}</span>
@@ -107,63 +107,3 @@
         </div>
     </div>
 @endsection
-
-{{--<x-guest-layout>--}}
-{{--    <x-auth-card>--}}
-{{--        <x-slot name="logo">--}}
-{{--            <a href="/">--}}
-{{--                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
-{{--            </a>--}}
-{{--        </x-slot>--}}
-
-{{--        <!-- Validation Errors -->--}}
-{{--        <x-auth-validation-errors class="mb-4" :errors="$errors" />--}}
-
-{{--        <form method="POST" action="{{ route('register') }}">--}}
-{{--            @csrf--}}
-
-{{--            <!-- Name -->--}}
-{{--            <div>--}}
-{{--                <x-label for="name" :value="__('Name')" />--}}
-
-{{--                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />--}}
-{{--            </div>--}}
-
-{{--            <!-- Email Address -->--}}
-{{--            <div class="mt-4">--}}
-{{--                <x-label for="email" :value="__('Email')" />--}}
-
-{{--                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />--}}
-{{--            </div>--}}
-
-{{--            <!-- Password -->--}}
-{{--            <div class="mt-4">--}}
-{{--                <x-label for="password" :value="__('Password')" />--}}
-
-{{--                <x-input id="password" class="block mt-1 w-full"--}}
-{{--                                type="password"--}}
-{{--                                name="password"--}}
-{{--                                required autocomplete="new-password" />--}}
-{{--            </div>--}}
-
-{{--            <!-- Confirm Password -->--}}
-{{--            <div class="mt-4">--}}
-{{--                <x-label for="password_confirmation" :value="__('Confirm Password')" />--}}
-
-{{--                <x-input id="password_confirmation" class="block mt-1 w-full"--}}
-{{--                                type="password"--}}
-{{--                                name="password_confirmation" required />--}}
-{{--            </div>--}}
-
-{{--            <div class="flex items-center justify-end mt-4">--}}
-{{--                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">--}}
-{{--                    {{ __('Already registered?') }}--}}
-{{--                </a>--}}
-
-{{--                <x-button class="ml-4">--}}
-{{--                    {{ __('Register') }}--}}
-{{--                </x-button>--}}
-{{--            </div>--}}
-{{--        </form>--}}
-{{--    </x-auth-card>--}}
-{{--</x-guest-layout>--}}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OauthController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,15 +22,20 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('home');
 
-    Route::get('/profile', function () {
-        return view('dashboard');
-    })->name('profile.edit');
-
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/add', [UserController::class, 'add'])->name('user.add');
+    Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/user/delete/{user}', [UserController::class, 'delete'])->name('user.delete');
+    Route::post('/user/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::post('/users', [UserController::class, 'create'])->name('user.create');
+
+    Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('profile/password', [ProfileController::class, 'password'])->name('profile.password');
 });
 
 Route::get('/github/redirect', [OauthController::class, 'githubRedirect'])->name('github.redirect');

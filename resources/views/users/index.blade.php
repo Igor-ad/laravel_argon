@@ -27,7 +27,7 @@
                                 </form>
                             </div>
                             <div class="col-2 text-right">
-                                <a href="" class="btn btn-sm btn-primary">Add user</a>
+                                <a href="{{ route('user.add') }}" class="btn btn-sm btn-primary">Add new user</a>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,8 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="">Edit</a>
+                                                <a class="dropdown-item" href="{{ route('user.edit', [$user->id]) }}">Edit</a>
+                                                <a class="dropdown-item" href="{{ route('user.delete', [$user->id]) }}">Delete</a>
                                             </div>
                                         </div>
                                     </td>
