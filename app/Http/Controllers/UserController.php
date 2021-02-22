@@ -31,30 +31,25 @@ class UserController extends Controller
 
     public function create(UserCreateRequest $request)
     {
-        $request->validated();
-        $password = $request->get('password');
-        $request['password'] = Hash::make($password);
+        $request['password'] = Hash::make($request->input('password'));
         User::create($request->all());
         return redirect()->route('user.index');
     }
 
     public function edit(User $user)
     {
-        $user = User::find($user->id);
         return view('users.edit', compact('user'));
     }
 
     public function update(UserUpdateRequest $request, User $user)
     {
-        $user = User::findOrFail($user->id);
-        $request->validated();
         $user->update($request->all());
         return redirect()->route('user.index');
     }
 
     public function delete(User $user)
     {
-        User::destroy($user->id);
+        $user->delete();
         return redirect()->route('user.index');
     }
 }
