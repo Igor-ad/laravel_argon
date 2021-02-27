@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\OauthController;
+use App\Http\Controllers\Auth\OauthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('profile/password', [ProfileController::class, 'password'])->name('profile.password');
 });
 
+Route::get('/login-code', [OauthController::class, 'create'])->name('oauth.code');
+Route::post('/login-code', [OauthController::class, 'store'])->name('oauth.store');
 Route::get('/github/redirect', [OauthController::class, 'githubRedirect'])->name('github.redirect');
 Route::get('/github/callback', [OauthController::class, 'githubCallback'])->name('github.callback');
 Route::get('/google/redirect', [OauthController::class, 'googleRedirect'])->name('google.redirect');
