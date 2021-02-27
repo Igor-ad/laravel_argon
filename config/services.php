@@ -42,4 +42,7 @@ return [
         'redirect' => env('GOOGLE_CLIENT_URL'),
     ],
 
+    'telegram-bot-api' => [
+        'token' => env('TELEGRAM_BOT_TOKEN')
+    ]
 ];
