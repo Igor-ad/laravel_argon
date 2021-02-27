@@ -20,7 +20,7 @@ class UserController extends Controller
 
         $users = $query
             ->orderBy('name')
-            ->paginate(2);
+            ->paginate(5);
         return view('users.index', compact('users'));
     }
 
