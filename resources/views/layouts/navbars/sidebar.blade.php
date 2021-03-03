@@ -83,17 +83,17 @@
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
+
                 <li class="nav-item">
-{{--                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">--}}
-{{--                        <i class="fab fa-laravel" style="color: #f4645f;"></i>--}}
-{{--                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Laravel Examples') }}</span>--}}
-{{--                    </a>--}}
+                    <a class="nav-link" href="{{ route('log') }}">
+                        <i class="ni fab fa-laravel text-primary"></i> {{ __('Tracking Log') }}
+                    </a>
+                </li>
 
-                    <div class="collapse show" id="navbar-examples">
-                        <ul class="nav nav-sm flex-column">
-
-                        </ul>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('tracking', ['api_token' => 951485623, 'country' => 'UA', 'product' => 'pad']) }}">
+                    <i class="ni fab fa-laravel text-primary"></i> {{ __('Test Page') }}
+                    </a>
                 </li>
 
                 <li class="nav-item">
