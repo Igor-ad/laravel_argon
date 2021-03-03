@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\TrackingController;
 use App\Http\Controllers\Auth\OauthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\TrackingRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,10 +35,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/{user}', [UserController::class, 'update'])->name('user.update');
     Route::post('/users', [UserController::class, 'create'])->name('user.create');
 
+    Route::get('tracking', [TrackingController::class, 'logs'])->name('log');
+    Route::post('tracking', [TrackingController::class, 'search'])->name('search.log');
+
     Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('profile/password', [ProfileController::class, 'password'])->name('profile.password');
 });
+
+Route::get('/api/track', [TrackingController::class, 'tracking'])
+    ->middleware(TrackingRequest::class)
+    ->name('tracking');
 
 Route::get('/login-code', [OauthController::class, 'create'])->name('oauth.code');
 Route::post('/login-code', [OauthController::class, 'store'])->name('oauth.store');
@@ -46,3 +55,4 @@ Route::get('/google/redirect', [OauthController::class, 'googleRedirect'])->name
 Route::get('/google/callback', [OauthController::class, 'googleCallback'])->name('google.callback');
 
 require __DIR__ . '/auth.php';
+require __DIR__. '/api.php';
