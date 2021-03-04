@@ -15,17 +15,21 @@ class UserController extends Controller
         return response()->json($users, 200);
     }
 
-    public function add(Request $request)
+    public function show(User $user)
+    {
+        return response()->json($user, 200);
+    }
 
+    public function apiadd(Request $request)
     {
         $request['password'] = Hash::make($request->input('password'));
         User::create($request->all());
-        return response()->json('OK', 201);
+        return response()->json('OK! User: ' . $request->name . ' creaded successfully', 201);
     }
 
     public function del(User $user)
     {
         $user->delete();
-        return response()->json(null, 204);
+        return response()->json('User ID: ' . $user->id . ' deleted successfully', 200);
     }
 }

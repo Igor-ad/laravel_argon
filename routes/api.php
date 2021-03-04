@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\TrackingController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:api'])->group(function (){
+Route::middleware(['auth:api'])->group(function () {
     Route::get('/user', [UserController::class, 'index']);
-    Route::post('/user/add', [UserController::class, 'add']);
+    Route::get('/user/show/{user}', [UserController::class, 'show']);
+    Route::get('/user/apiadd', [UserController::class, 'apiadd']);
     Route::get('/user/del/{user}', [UserController::class, 'del']);
+    Route::get('/track', [TrackingController::class, 'tracking'])->name('tracking');
 });

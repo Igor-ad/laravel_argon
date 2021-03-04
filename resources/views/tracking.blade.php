@@ -46,7 +46,7 @@
                                     <tbody>
                                     @foreach($trackings as $tracking)
                                         <tr>
-                                            <td>{{ $tracking->user->name }}</td>
+                                            <td>{{ isset($tracking->user) ? $tracking->user->name : '-' }}</td>
                                             <td>{{ $tracking->ip }}</td>
                                             <td>{{ $tracking->country }}</td>
                                             <td>{{ $tracking->product }}</td>

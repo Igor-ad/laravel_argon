@@ -92,7 +92,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('tracking', ['api_token' => 951485623, 'country' => 'UA', 'product' => 'pad']) }}">
-                    <i class="ni fab fa-laravel text-primary"></i> {{ __('Test Page') }}
+                    <i class="ni fab fa-laravel text-primary"></i> {{ __('Api Track Test Page') }}
                     </a>
                 </li>
 
