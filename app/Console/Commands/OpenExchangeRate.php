@@ -6,7 +6,7 @@ use App\Models\Currency;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
-class OpenExchangeRates extends Command
+class OpenExchangeRate extends Command
 {
     /**
      * The name and signature of the console command.
@@ -34,12 +34,12 @@ class OpenExchangeRates extends Command
 
     public function handle(): void
     {
-        $responseRates = Http::get(config('services.openexchange.uri')
+        $responseRate = Http::get(config('services.openexchange.uri')
             . config('services.openexchange.token'));
 
-        $currenciesRates = $responseRates->json();
+        $currenciesRate = $responseRate->json();
 
-        foreach ($currenciesRates['rates'] as $key => $rate) {
+        foreach ($currenciesRate['rates'] as $key => $rate) {
             $currencyRate['code'] = $key;
             $currencyRate['rate'] = $rate;
             Currency::upsert($currencyRate, ['code'], ['rate']);
