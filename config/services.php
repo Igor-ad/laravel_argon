@@ -44,5 +44,16 @@ return [
 
     'telegram-bot-api' => [
         'token' => env('TELEGRAM_BOT_TOKEN')
-    ]
+    ],
+
+    'openexchange' => [
+        'token' => env('OPEN_EXCHANGE_RATES_TOKEN'),
+        'uri' => 'https://openexchangerates.org/api/latest.json?base=USD&app_id=',
+    ],
+
+    'openexchangecur' => [
+        'token' => env('OPEN_EXCHANGE_RATES_TOKEN'),
+        'uri' => 'https://openexchangerates.org/api/currencies.json?app_id=',
+    ],
+
 ];
