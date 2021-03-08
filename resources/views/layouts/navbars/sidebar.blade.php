@@ -97,6 +97,12 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('currency') }}">
+                        <i class="ni fab fa-laravel text-primary"></i> {{ __('Currencies rate') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.index') }}">
                         <i class="ni ni-circle-08 text-pink"></i> {{ __('Users') }}
                     </a>

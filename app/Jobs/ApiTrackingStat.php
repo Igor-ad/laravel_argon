@@ -5,13 +5,13 @@ namespace App\Jobs;
 use App\Models\Tracking;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Http\Request;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ApiTrackingStat implements ShouldQueue
 {
@@ -27,31 +27,20 @@ class ApiTrackingStat implements ShouldQueue
         $user = Auth::user();
 
         $requestArray = [
+            'user_id' => $user->id,
             'user_agent' => $request->userAgent(),
             'ip' => $request->getClientIp(),
             'country' => $request->get('country'),
-            'product' => $request->get('product')
+            'product' => $request->get('product'),
         ];
 
-        $trackings = Tracking::select()->where('user_id', $user->id)->get();
+        $tracking = DB::table('trackings')->where($requestArray)->increment('counter');
 
-        foreach ($trackings as $tracking) {
-            $trackingArray = [
-                'user_agent' => $tracking->user_agent,
-                'ip' => $tracking->ip,
-                'country' => $tracking->country,
-                'product' => $tracking->product
-            ];
-
-            if ($trackingArray == $requestArray) {
-                $tracking->increment('counter');
-                exit('OK! + 1');
-            }
+        if ($tracking) {
+            exit('OK! + 1');
         }
 
-        $requestArray['user_id'] = $user->id;
-        $requestArray['counter'] = 1;
         Tracking::create($requestArray);
-            exit('OK! New sting');
+        exit('OK! New sting');
     }
 }

@@ -18,8 +18,8 @@
                                 <h3 class="mb-0">Visit Logs</h3>
                             </div>
                             <div class="col-2">
-                                <form method="POST" action="{{ route('search.log') }}">
-                                    @csrf
+                                <form method="GET" action="{{ route('log') }}">
+
                                     <div class="form-group">
                                         <input type="submit" class="btn" value="search">
                                     </div>

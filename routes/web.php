@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\TrackingController;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\Auth\OauthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(callback: function () {
 
     Route::get('/', function () {
         return view('dashboard');
@@ -35,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/users', [UserController::class, 'create'])->name('user.create');
 
     Route::get('tracking', [TrackingController::class, 'logs'])->name('log');
-    Route::post('tracking', [TrackingController::class, 'search'])->name('search.log');
+    Route::get('/currency', [CurrencyController::class, 'rate'])->name('currency');
 
     Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
